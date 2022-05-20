@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Jaga Weather</string>
+    <string-array name="weather">
+    </string-array>
+</resources>
