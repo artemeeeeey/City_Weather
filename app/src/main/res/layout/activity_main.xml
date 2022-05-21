@@ -142,6 +142,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/day1"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/idRvWeather"
                 android:layout_width="match_parent"
@@ -149,6 +153,10 @@
                 android:layout_alignParentBottom="true"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/day2"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/idRvWeather1"
                 android:layout_width="match_parent"
@@ -156,6 +164,10 @@
                 android:layout_alignParentBottom="true"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/day3"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/idRvWeather2"
                 android:layout_width="match_parent"
@@ -163,6 +175,10 @@
                 android:layout_alignParentBottom="true"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/day4"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/idRvWeather3"
                 android:layout_width="match_parent"

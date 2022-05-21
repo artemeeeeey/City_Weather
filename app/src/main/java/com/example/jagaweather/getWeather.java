@@ -73,7 +73,8 @@ public class getWeather extends Worker {
                     temps[i] = weather_data.getJSONObject("main").getDouble("temp") + "℃";
                     feels_like[i] = weather_data.getJSONObject("main").getDouble("feels_like") + "℃";
                     description[i] = weather_data.getJSONArray("weather").getJSONObject(0).getString("description");
-                    time[i] = weather_data.getString("dt_txt").split(" ")[1];
+                    time[i] = weather_data.getString("dt_txt").split(" ")[1].split(":")[0] + ":"
+                            + weather_data.getString("dt_txt").split(" ")[1].split(":")[1];
                 }
 
                 Log.d("temps", temps.toString());
