@@ -2,7 +2,6 @@ package com.example.jagaweather;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.work.Data;
@@ -81,46 +80,6 @@ public class getWeather extends Worker {
                 Log.d("feels_like", feels_like.toString());
                 Log.d("description", description.toString());
                 Log.d("time", time.toString());
-
-
-                //current weather
-//                JSONObject current_weather = list.getJSONObject(1);
-//                String current_temp = current_weather.getJSONObject("main").getDouble("temp") + "℃";
-//                String feels_like = current_weather.getJSONObject("main").getDouble("feels_like") + "℃";
-//                String current_description = current_weather.getJSONArray("weather").getJSONObject(0).getString("description");
-//
-//                one day after
-//                JSONObject od_weather = list.getJSONObject(9);
-//                String od_temp = od_weather.getJSONObject("main").getDouble("temp") + "℃";
-//                String od_description = od_weather.getJSONArray("weather").getJSONObject(0).getString("description");
-//
-//                two days after
-//                JSONObject twd_weather = list.getJSONObject(17);
-//                String twd_temp = twd_weather.getJSONObject("main").getDouble("temp") + "℃";
-//                String twd_description = twd_weather.getJSONArray("weather").getJSONObject(0).getString("description");
-//
-//                three days after
-//                JSONObject thd_weather = list.getJSONObject(25);
-//                String thd_temp = thd_weather.getJSONObject("main").getDouble("temp") + "℃";
-//                String thd_description = thd_weather.getJSONArray("weather").getJSONObject(0).getString("description");
-//
-//                four days after
-//                JSONObject frd_weather = list.getJSONObject(33);
-//                String frd_temp = frd_weather.getJSONObject("main").getDouble("temp") + "℃";
-//                String frd_description = frd_weather.getJSONArray("weather").getJSONObject(0).getString("description");
-//
-//                five days after
-//                JSONObject fvd_weather = list.getJSONObject(39);
-//                String fvd_temp = fvd_weather.getJSONObject("main").getDouble("temp") + "℃";
-//                String fvd_description = fvd_weather.getJSONArray("weather").getJSONObject(0).getString("description");
-
-//                output = new Data.Builder().putString("current_temp", current_temp)
-//                        .putString("feels_like", feels_like).putString("current_description", current_description)
-//                        .putString("1temp", od_temp).putString("1description", od_description)
-//                        .putString("2temp", twd_temp).putString("2description", twd_description)
-//                        .putString("3temp", thd_temp).putString("3description", thd_description)
-//                        .putString("4temp", frd_temp).putString("4description", frd_description)
-//                        .putString("5temp", fvd_temp).putString("5description", fvd_description).build();
 
                 output = new Data.Builder().putStringArray("temps", temps)
                         .putStringArray("feels_like", feels_like)
