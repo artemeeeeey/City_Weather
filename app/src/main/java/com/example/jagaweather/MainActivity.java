@@ -60,8 +60,9 @@ public class MainActivity extends AppCompatActivity {
         String[] towns = { "Уфа", "Москва"};
         Date currentTime = Calendar.getInstance().getTime();
         Log.d("time", currentTime.toString());
-
         String[] currentTime_string = currentTime.toString().split(" ");
+        String day_today = currentTime_string[0];
+        System.out.println("cock" + day_today);
         String hours = (currentTime.toString().split(" ")[3].split(":"))[0];
         write_city_name = findViewById(R.id.idCityName);
         city_name = findViewById(R.id.idEdtCity);
@@ -124,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                             else if(current_description.equals("переменная облачность")){ idIVIcon.setImageResource(R.drawable.cloud);}
                             else if(current_description.equals("небольшой дождь")){ idIVIcon.setImageResource(R.drawable.rain);}
                             else if(current_description.equals("облачно с прояснениями")){ idIVIcon.setImageResource(R.drawable.suncloud);}
+                            setDay(day_today);
 
                             setArrays(weather_future, time, images, 1);
                             Myadapter myadapter = new Myadapter(MainActivity.this,weather_future,time, images);
@@ -199,5 +201,49 @@ public class MainActivity extends AppCompatActivity {
         weather_future = new String[8];
         time = new String[8];
         images = new int[8];
+    }
+    public void setDay(String day_today){
+        if(day_today.equals("sun")){
+            day1.setText("Понедальник");
+            day2.setText("Вторник");
+            day3.setText("Среда");
+            day4.setText("Четверг");
+        }
+        else if(day_today.equals("sat")){
+            day1.setText("Воскресенье");
+            day2.setText("Понедельник");
+            day3.setText("Вторник");
+            day4.setText("Среда");
+        }
+        else if(day_today.equals("fri")){
+            day1.setText("Суббота");
+            day2.setText("Воскресенье");
+            day3.setText("Понедальник");
+            day4.setText("Вторник");
+        }
+        else if(day_today.equals("thu")){
+            day1.setText("Пятница");
+            day2.setText("Суббота");
+            day3.setText("Воскресенье");
+            day4.setText("Понедельник");
+        }
+        else if(day_today.equals("wed")){
+            day1.setText("Четверг");
+            day2.setText("Пятница");
+            day3.setText("Суббота");
+            day4.setText("Воскресенье");
+        }
+        else if(day_today.equals("tue")){
+            day1.setText("Среда");
+            day2.setText("Четверг");
+            day3.setText("Пятица");
+            day4.setText("Суббота");
+        }
+        else if(day_today.equals("mon")){
+            day1.setText("Вторник");
+            day2.setText("Среда");
+            day3.setText("Четверг");
+            day4.setText("Пятница");
+        }
     }
 }
