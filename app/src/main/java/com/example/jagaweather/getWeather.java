@@ -69,7 +69,7 @@ public class getWeather extends Worker {
 
                 for (int i = 0; i < 40; i++){
                     JSONObject weather_data = list.getJSONObject(i);
-                    temps[i] = weather_data.getJSONObject("main").getDouble("temp") + "℃";
+                    temps[i] = weather_data.getJSONObject("main").getInt("temp") + "℃";
                     feels_like[i] = weather_data.getJSONObject("main").getDouble("feels_like") + "℃";
                     description[i] = weather_data.getJSONArray("weather").getJSONObject(0).getString("description");
                     time[i] = weather_data.getString("dt_txt").split(" ")[1].split(":")[0] + ":"

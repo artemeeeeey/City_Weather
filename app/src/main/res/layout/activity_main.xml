@@ -124,7 +124,8 @@
             android:layout_marginBottom="10dp"
             android:gravity="center"
             android:textAlignment="center"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
 
 
 
@@ -145,7 +146,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/day1"/>
+                android:id="@+id/day1"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/idRvWeather"
                 android:layout_width="match_parent"
@@ -156,7 +159,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/day2"/>
+                android:id="@+id/day2"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/idRvWeather1"
                 android:layout_width="match_parent"
@@ -167,7 +172,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/day3"/>
+                android:id="@+id/day3"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/idRvWeather2"
                 android:layout_width="match_parent"
@@ -178,7 +185,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/day4"/>
+                android:id="@+id/day4"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/idRvWeather3"
                 android:layout_width="match_parent"
@@ -187,11 +196,12 @@
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
         </LinearLayout>
     </ScrollView>
-
-
-
-
-
 </RelativeLayout>
