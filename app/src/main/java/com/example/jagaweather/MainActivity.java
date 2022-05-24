@@ -2,12 +2,14 @@ package com.example.jagaweather;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,14 +19,17 @@ import java.util.Locale;
 import androidx.work.WorkRequest;
 
 import android.Manifest;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
+import android.transition.Slide;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
@@ -39,11 +44,13 @@ import org.jsoup.select.Elements;
 //238d9c2c4369d56d04e268ffe5b14143 == open weather map api
 
 public class MainActivity extends AppCompatActivity {
+    File file_theme = new File("/data/data/com.example.weather_app/files/theme.txt");
     AutoCompleteTextView city_name;
     String city;
     TextView write_city_name, weather;
     TextView day1, day2, day3, day4;
     ImageButton search;
+    ImageButton themes;
     ImageView idIVIcon;
     TextView condition;
     RecyclerView rv,rv1,rv2,rv3;
@@ -74,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
+        getWindow().setExitTransition(new Slide());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -88,6 +97,10 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             startService();
+        }
+
+        if (file_theme.exists()){
+
         }
 
         cities = "Абакан Азов Александров Алексин Альметьевск Анапа Ангарск Анжеро-Судженск Апатиты Арзамас Армавир Арсеньев Артем Архангельск Асбест Астрахань Ачинск Балаково Балахна Балашиха Балашов Барнаул Батайск Белгород Белебей Белово Белогорск Белорецк Белореченск Бердск Березники Березовский Бийск Биробиджан Благовещенск Бор Борисоглебск Боровичи Братск Брянск Бугульма Буденновск Бузулук Буйнакск Великие Луки Великий Новгород Верхняя Пышма Видное Владивосток Владикавказ Владимир Волгоград Волгодонск Волжск Волжский Вологда Вольск Воркута Воронеж Воскресенск Воткинск Всеволожск Выборг Выкса Вязьма Гатчина Геленджик Георгиевск Глазов Горно-Алтайск Грозный Губкин Гудермес Гуково Гусь-Хрустальный Дербент Дзержинск Димитровград Дмитров Долгопрудный Домодедово Донской Дубна Евпатория Егорьевск Ейск Екатеринбург Елабуга Елец Ессентуки Железногорск Железногорск Жигулевск Жуковский Заречный Зеленогорск Зеленодольск Златоуст Иваново Ивантеевка Ижевск Избербаш Иркутск Искитим Ишим Ишимбай Йошкар-Ола Казань Калининград Калуга Каменск-Уральский Каменск-Шахтинский Камышин Канск Каспийск Кемерово Керчь Кинешма Кириши Киров Кирово-Чепецк Киселевск Кисловодск Клин Клинцы Ковров Когалым Коломна Комсомольск-на-Амуре Копейск Королев Кострома Котлас Красногорск Краснодар Краснокаменск Краснокамск Краснотурьинск Красноярск Кропоткин Крымск Кстово Кузнецк Кумертау Кунгур Курган Курск Кызыл Лабинск Лениногорск Ленинск-Кузнецкий Лесосибирск Липецк Лиски Лобня Лысьва Лыткарино Люберцы Магадан Магнитогорск Майкоп Махачкала Междуреченск Мелеуз Миасс Минеральные Воды Минусинск Михайловка Михайловск Мичуринск Москва Мурманск Муром Мытищи Набережные Челны Назарово Назрань Нальчик Наро-Фоминск Находка Невинномысск Нерюнгри Нефтекамск Нефтеюганск Нижневартовск Нижнекамск Нижний Новгород Нижний Тагил Новоалтайск Новокузнецк Новокуйбышевск Новомосковск Новороссийск Новосибирск Новотроицк Новоуральск Новочебоксарск Новочеркасск Новошахтинск Новый Уренгой Ногинск Норильск Ноябрьск Нягань Обнинск Одинцово Озерск Октябрьский Омск Орел Оренбург Орехово-Зуево Орск Павлово Павловский Посад Пенза Первоуральск Пермь Петрозаводск Петропавловск-Камчатский Подольск Полевской Прокопьевск Прохладный Псков Пушкино Пятигорск Раменское Ревда Реутов Ржев Рославль Россошь Ростов-на-Дону Рубцовск Рыбинск Рязань Салават Сальск Самара Санкт-Петербург Саранск Сарапул Саратов Саров Свободный Севастополь Северодвинск Северск Сергиев Посад Серов Серпухов Сертолово Сибай Симферополь Славянск-на-Кубани Смоленск Соликамск Солнечногорск Сосновый Бор Сочи Ставрополь Старый Оскол Стерлитамак Ступино Сургут Сызрань Сыктывкар Таганрог Тамбов Тверь Тимашевск Тихвин Тихорецк Тобольск Тольятти Томск Троицк Туапсе Туймазы Тула Тюмень Узловая Улан-Удэ Ульяновск Урус-Мартан Усолье-Сибирское Уссурийск Усть-Илимск Уфа Ухта Феодосия Фрязино Хабаровск Ханты-Мансийск Хасавюрт Химки Чайковский Чапаевск Чебоксары Челябинск Черемхово Череповец Черкесск Черногорск Чехов Чистополь Чита Шадринск Шали Шахты Шуя Щекино Щелково Электросталь Элиста Энгельс Южно-Сахалинск Юрга Якутск Ялта Ярославль";
@@ -113,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
         day2 = findViewById(R.id.day2);
         day3 = findViewById(R.id.day3);
         day4 = findViewById(R.id.day4);
+        themes = findViewById(R.id.Themes);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, towns);
         city_name.setAdapter(adapter);
@@ -195,6 +209,15 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                 }
+            }
+        });
+
+        themes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, Themes.class);
+                startActivity(i, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
+
             }
         });
     }

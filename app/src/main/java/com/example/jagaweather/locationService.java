@@ -36,10 +36,9 @@ public class locationService extends Service {
                 Log.d("my location", locationResult.getLastLocation().getLatitude() + " " +
                         locationResult.getLastLocation().getLongitude());
 
-                Intent intent = new Intent(locationService.this, MainActivity.class);
+                Intent intent = new Intent("ACT_LOC");
                 intent.putExtra("lat", locationResult.getLastLocation().getLatitude());
                 intent.putExtra("lon", locationResult.getLastLocation().getLongitude());
-
             }
         };
     }
