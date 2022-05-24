@@ -2,14 +2,12 @@ package com.example.jagaweather;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
@@ -19,20 +17,14 @@ import java.util.Locale;
 import androidx.work.WorkRequest;
 
 import android.Manifest;
-import android.app.ActivityOptions;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
-import android.transition.Slide;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
@@ -40,17 +32,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
 //238d9c2c4369d56d04e268ffe5b14143 == open weather map api
-//d1c982620c3e4ec093755b6fc3e5125a == news api
 
 public class MainActivity extends AppCompatActivity {
-    File file_theme = new File("/data/data/com.example.weather_app/files/theme.txt");
     AutoCompleteTextView city_name;
     String city;
     TextView write_city_name, weather;
     TextView day1, day2, day3, day4;
     ImageButton search;
-    ImageButton themes;
     ImageView idIVIcon;
     TextView condition;
     RecyclerView rv,rv1,rv2,rv3;
@@ -61,6 +54,12 @@ public class MainActivity extends AppCompatActivity {
     double lon, lat;
     String day_today;
 
+    private Thread sThread;
+    private Runnable runnable;
+
+    //parsing
+    Document doc;
+
     //current weather
     String current_temp;
     String feels_like;
@@ -70,18 +69,14 @@ public class MainActivity extends AppCompatActivity {
     Geocoder geocoder;
     List<Address> addresses;
 
+    //hints
     String cities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
-        getWindow().setExitTransition(new Slide());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (file_theme.exists()){
-
-        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
@@ -118,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
         day2 = findViewById(R.id.day2);
         day3 = findViewById(R.id.day3);
         day4 = findViewById(R.id.day4);
-        themes = findViewById(R.id.Themes);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, towns);
         city_name.setAdapter(adapter);
@@ -127,6 +121,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+
+                init();
 
                 if (city_name.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "Поле не может быть пустым", Toast.LENGTH_SHORT).show();
@@ -146,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
                         if (workInfo.getState().toString().equals("FAILED")){
                             Toast.makeText(getApplicationContext(), "Попробуйте ещё", Toast.LENGTH_SHORT).show();
                         }
+
                         else if (workInfo != null && workInfo.getState().isFinished()){
 
                             temps = workInfo.getOutputData().getStringArray("temps");
@@ -200,24 +197,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        themes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, Themes.class);
-                startActivity(i, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
-
-            }
-        });
-
-
-
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
     }
 
     public void setArrays(String[] temp, String[] time, int[] images, int position){
@@ -289,10 +273,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void init(){
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                getCityInfo();
+            }
+        };
+        sThread = new Thread(runnable);
+        sThread.start();
+    }
+
+    private void getCityInfo(){
+        try {
+            doc = Jsoup.connect("https://www.google.com/search?q=Уфа").get();
+            Elements description = doc.getElementsByClass("PZPZlf hb8SAc");
+            Log.d("parse_title", description.text());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void startService(){
-        LocationBroadcastReceiver locationBroadcastReceiver = new LocationBroadcastReceiver();
-        IntentFilter intentFilter = new IntentFilter("ACT_LOC");
-        registerReceiver(locationBroadcastReceiver, intentFilter);
         Intent intent = new Intent(MainActivity.this, locationService.class);
         startService(intent);
     }
@@ -308,19 +311,6 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     Toast.makeText(this, "Предоставьте доступ к местоположению", Toast.LENGTH_SHORT).show();
                 }
-        }
-    }
-
-
-
-    public class LocationBroadcastReceiver extends BroadcastReceiver{
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals("ACT_LOC")){
-                lat = intent.getDoubleExtra("lat", 0f);
-                lon = intent.getDoubleExtra("lon", 0f);
-            }
         }
     }
 }

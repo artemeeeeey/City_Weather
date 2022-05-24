@@ -25,6 +25,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.example.jagaweather'
 }
 
 dependencies {
@@ -38,7 +39,4 @@ dependencies {
     implementation "androidx.work:work-runtime:2.7.1"
     implementation 'org.jsoup:jsoup:1.13.1'
     implementation 'com.google.android.gms:play-services-location:19.0.1'
-    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
-
 }
