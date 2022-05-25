@@ -29,7 +29,6 @@ import java.io.PrintWriter;
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
         getWindow().setExitTransition(new Fade());
-        overridePendingTransition(R.anim.slide_up, R.anim.slide_down);
         file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_themes);
@@ -107,8 +106,7 @@ import java.io.PrintWriter;
             public void onClick(View view) {
                 Intent i = new Intent(Themes.this, MainActivity.class);
                 startActivity(i);
-                finish();
-                overridePendingTransition(R.anim.slide_down,R.anim.no_animation);
+                overridePendingTransition(R.anim.slide_up,R.anim.slide_down);
             }
         });
     }
