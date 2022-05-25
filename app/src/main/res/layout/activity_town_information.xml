@@ -6,21 +6,59 @@
     android:layout_height="match_parent"
     tools:context=".Town_information"
     android:background="@color/black_shade_1">
-        <RelativeLayout
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/theme2"
+        android:background="@color/black_shade_1">
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/town">
-
-            <TextView
-                android:id="@+id/city_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="20dp"
-                android:textSize="18dp" />
+            android:id="@+id/Background"/>
 
 
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/city_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="fill"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/local_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_below="@+id/city_description"
+           android:layout_marginTop="20dp"
+            android:gravity="left"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/population"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/local_time"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:gravity="left"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/base"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/population"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:gravity="left"
+            android:textSize="20dp" />
+
+
+    </RelativeLayout>
 
 
 </RelativeLayout>

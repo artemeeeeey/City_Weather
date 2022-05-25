@@ -290,6 +290,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                         if (!city_name.getText().toString().equals("")){
                             Intent back1 = new Intent(MainActivity.this,Town_information.class);
                             back1.putExtra("description", city_description);
+                            back1.putExtra("base", base_date);
+                            back1.putExtra("population", population);
+                            back1.putExtra("local_time", local_time);
                             startActivity(back1, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
                         }
                 }
