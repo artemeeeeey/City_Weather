@@ -27,6 +27,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
+import android.transition.Fade;
 import android.transition.Slide;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -52,7 +53,7 @@ import org.jsoup.select.Elements;
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener{
     private static  final  String TAG = "Siwpe Position";
     private  float y1,y2;
-    private static  int MIN_DISTANCE = 159;
+    private static  int MIN_DISTANCE = 300;
     private GestureDetector gestureDetector;
     AutoCompleteTextView city_name;
     TextView write_city_name, weather;
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
-        getWindow().setExitTransition(new Slide());
+        getWindow().setExitTransition(new Fade());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
