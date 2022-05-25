@@ -1,0 +1,436 @@
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".MainActivity\"\r\n    android:background=\"@color/black_shade_1\">\r\n\r\n\r\n    <ProgressBar\r\n        android:id=\"@+id/idPBloading\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_alignParentTop=\"true\"\r\n        android:visibility=\"gone\"\r\n        android:layout_alignParentEnd=\"true\" />\r\n    <RelativeLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:id=\"@+id/idRLHome\">\r\n\r\n        <ImageView\r\n            android:id=\"@+id/IvBack\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            android:scaleType=\"centerCrop\"\r\n            android:background=\"@color/black_shade_1\"\r\n            />\r\n\r\n        <ImageButton\r\n            android:id=\"@+id/Themes\"\r\n            android:layout_width=\"40dp\"\r\n            android:layout_height=\"40dp\"\r\n            android:layout_marginHorizontal=\"10dp\"\r\n            android:layout_marginTop=\"10dp\"\r\n            android:background=\"@android:color/transparent\"\r\n            android:src=\"@drawable/ic_baseline_image_24\"\r\n            app:tint=\"@color/white\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/idCityName\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"30dp\"\r\n            android:gravity=\"center\"\r\n            android:padding=\"20dp\"\r\n            android:text=\"City name\"\r\n            android:textAlignment=\"center\"\r\n            android:textColor=\"@color/white\"\r\n            android:textSize=\"18sp\" />\r\n\r\n        <LinearLayout\r\n            android:id=\"@+id/Linear1\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_below=\"@id/idCityName\"\r\n            android:orientation=\"horizontal\"\r\n            android:weightSum=\"5\"\r\n            tools:ignore=\"NotSibling\">\r\n\r\n            <com.google.android.material.textfield.TextInputLayout\r\n                android:id=\"@+id/idTILCity\"\r\n                android:layout_width=\"0dp\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_margin=\"10dp\"\r\n                android:layout_weight=\"4.5\"\r\n                android:background=\"@android:color/transparent\"\r\n                android:padding=\"5dp\"\r\n                android:backgroundTint=\"@color/white\"\r\n                android:textColorHint=\"@color/white\"\r\n                app:hintTextColor=\"@color/white\">\r\n\r\n                <AutoCompleteTextView\r\n                    android:id=\"@+id/idEdtCity\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:background=\"@android:color/transparent\"\r\n                    android:importantForAutofill=\"no\"\r\n                    android:textColorHint=\"@color/white\"\r\n                    android:inputType=\"text\"\r\n                    android:backgroundTint=\"@color/black_shade_1\"\r\n                    android:singleLine=\"true\"\r\n                    android:textColor=\"@color/white\"\r\n                    android:textSize=\"20sp\" />\r\n\r\n\r\n\r\n            </com.google.android.material.textfield.TextInputLayout>\r\n            <ImageButton\r\n                android:id=\"@+id/idTVSearch\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_gravity=\"center\"\r\n\r\n                android:background=\"@android:color/transparent\"\r\n                android:src=\"@drawable/ic_baseline_search_24\"\r\n                app:tint=\"@color/white\" />\r\n        </LinearLayout>\r\n\r\n        <TextView\r\n            android:id=\"@+id/idTVTemperture\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_below=\"@id/Linear1\"\r\n            android:layout_marginStart=\"10dp\"\r\n            android:layout_marginTop=\"10dp\"\r\n            android:layout_marginEnd=\"10dp\"\r\n            android:layout_marginBottom=\"10dp\"\r\n            android:gravity=\"center_horizontal\"\r\n            android:padding=\"5dp\"\r\n            android:textColor=\"@color/white\"\r\n            android:textSize=\"70dp\"\r\n            tools:ignore=\"NotSibling\" />\r\n\r\n        <ImageView\r\n            android:id=\"@+id/idIVIcon\"\r\n            android:layout_width=\"150dp\"\r\n            android:layout_height=\"150dp\"\r\n            android:layout_below=\"@id/idTVTemperture\"\r\n            android:layout_centerHorizontal=\"true\"\r\n            android:layout_marginStart=\"10dp\"\r\n            android:layout_marginTop=\"10dp\"\r\n            android:layout_marginEnd=\"10dp\"\r\n            android:layout_marginBottom=\"10dp\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/idTVCondition\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_below=\"@id/idIVIcon\"\r\n            android:layout_marginStart=\"10dp\"\r\n            android:layout_marginTop=\"10dp\"\r\n            android:layout_marginEnd=\"10dp\"\r\n            android:layout_marginBottom=\"10dp\"\r\n            android:gravity=\"center\"\r\n            android:textAlignment=\"center\"\r\n            android:textColor=\"@color/white\"\r\n            android:textSize=\"18sp\"/>\r\n\r\n\r\n\r\n\r\n\r\n\r\n</RelativeLayout>\r\n    <ScrollView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:scrollbars=\"none\"\r\n        android:layout_marginTop=\"490dp\"\r\n        android:layout_marginHorizontal=\"10dp\">\r\n        <LinearLayout\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\">\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:id=\"@+id/day1\"\r\n                android:textColor=\"@color/white\"\r\n                android:textSize=\"18sp\"/>\r\n            <androidx.recyclerview.widget.RecyclerView\r\n                android:id=\"@+id/idRvWeather\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_alignParentBottom=\"true\"\r\n                android:orientation=\"horizontal\"\r\n                app:layoutManager=\"androidx.recyclerview.widget.LinearLayoutManager\" />\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:id=\"@+id/day2\"\r\n                android:textColor=\"@color/white\"\r\n                android:textSize=\"18sp\"/>\r\n            <androidx.recyclerview.widget.RecyclerView\r\n                android:id=\"@+id/idRvWeather1\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_alignParentBottom=\"true\"\r\n                android:orientation=\"horizontal\"\r\n                app:layoutManager=\"androidx.recyclerview.widget.LinearLayoutManager\" />\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:id=\"@+id/day3\"\r\n                android:textColor=\"@color/white\"\r\n                android:textSize=\"18sp\"/>\r\n            <androidx.recyclerview.widget.RecyclerView\r\n                android:id=\"@+id/idRvWeather2\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_alignParentBottom=\"true\"\r\n                android:orientation=\"horizontal\"\r\n                app:layoutManager=\"androidx.recyclerview.widget.LinearLayoutManager\" />\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:id=\"@+id/day4\"\r\n                android:textColor=\"@color/white\"\r\n                android:textSize=\"18sp\"/>\r\n            <androidx.recyclerview.widget.RecyclerView\r\n                android:id=\"@+id/idRvWeather3\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_alignParentBottom=\"true\"\r\n                android:orientation=\"horizontal\"\r\n                app:layoutManager=\"androidx.recyclerview.widget.LinearLayoutManager\" />\r\n\r\n\r\n        </LinearLayout>\r\n    </ScrollView>\r\n</RelativeLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	(revision d5153590c457f444a73fe5689757c1e197bb73c3)
++++ b/app/src/main/res/layout/activity_main.xml	(date 1653492796150)
+@@ -15,199 +15,211 @@
+         android:layout_alignParentTop="true"
+         android:visibility="gone"
+         android:layout_alignParentEnd="true" />
+-    <RelativeLayout
+-        android:layout_width="match_parent"
+-        android:layout_height="match_parent"
+-        android:id="@+id/idRLHome">
++    <ScrollView
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        >
++        <RelativeLayout
++            android:layout_width="match_parent"
++            android:layout_height="match_parent"
++            android:id="@+id/idRLHome">
+ 
+-        <ImageView
+-            android:id="@+id/IvBack"
+-            android:layout_width="match_parent"
+-            android:layout_height="match_parent"
+-            android:scaleType="centerCrop"
+-            android:background="@color/black_shade_1"
+-            />
++            <ImageView
++                android:id="@+id/IvBack"
++                android:layout_width="match_parent"
++                android:layout_height="match_parent"
++                android:scaleType="centerCrop"
++                android:background="@color/black_shade_1"
++                />
+ 
+-        <ImageButton
+-            android:id="@+id/Themes"
+-            android:layout_width="40dp"
+-            android:layout_height="40dp"
+-            android:layout_marginHorizontal="10dp"
+-            android:layout_marginTop="10dp"
+-            android:background="@android:color/transparent"
+-            android:src="@drawable/ic_baseline_image_24"
+-            app:tint="@color/white" />
++            <ImageButton
++                android:id="@+id/Themes"
++                android:layout_width="40dp"
++                android:layout_height="40dp"
++                android:layout_marginHorizontal="10dp"
++                android:layout_marginTop="10dp"
++                android:background="@android:color/transparent"
++                android:src="@drawable/ic_baseline_image_24"
++                app:tint="@color/white" />
+ 
+-        <TextView
+-            android:id="@+id/idCityName"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="30dp"
+-            android:gravity="center"
+-            android:padding="20dp"
+-            android:text="City name"
+-            android:textAlignment="center"
+-            android:textColor="@color/white"
+-            android:textSize="18sp" />
++            <TextView
++                android:id="@+id/idCityName"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="30dp"
++                android:gravity="center"
++                android:padding="20dp"
++                android:text="City name"
++                android:textAlignment="center"
++                android:textColor="@color/white"
++                android:textSize="18sp" />
+ 
+-        <LinearLayout
+-            android:id="@+id/Linear1"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:layout_below="@id/idCityName"
+-            android:orientation="horizontal"
+-            android:weightSum="5"
+-            tools:ignore="NotSibling">
++            <LinearLayout
++                android:id="@+id/Linear1"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:layout_below="@id/idCityName"
++                android:orientation="horizontal"
++                android:weightSum="5"
++                tools:ignore="NotSibling">
+ 
+-            <com.google.android.material.textfield.TextInputLayout
+-                android:id="@+id/idTILCity"
+-                android:layout_width="0dp"
+-                android:layout_height="wrap_content"
+-                android:layout_margin="10dp"
+-                android:layout_weight="4.5"
+-                android:background="@android:color/transparent"
+-                android:padding="5dp"
+-                android:backgroundTint="@color/white"
+-                android:textColorHint="@color/white"
+-                app:hintTextColor="@color/white">
++                <com.google.android.material.textfield.TextInputLayout
++                    android:id="@+id/idTILCity"
++                    android:layout_width="0dp"
++                    android:layout_height="wrap_content"
++                    android:layout_margin="10dp"
++                    android:layout_weight="4.5"
++                    android:background="@android:color/transparent"
++                    android:padding="5dp"
++                    android:backgroundTint="@color/white"
++                    android:textColorHint="@color/white"
++                    app:hintTextColor="@color/white">
+ 
+-                <AutoCompleteTextView
+-                    android:id="@+id/idEdtCity"
+-                    android:layout_width="match_parent"
+-                    android:layout_height="match_parent"
+-                    android:background="@android:color/transparent"
+-                    android:importantForAutofill="no"
+-                    android:textColorHint="@color/white"
+-                    android:inputType="text"
+-                    android:backgroundTint="@color/black_shade_1"
+-                    android:singleLine="true"
+-                    android:textColor="@color/white"
+-                    android:textSize="20sp" />
++                    <AutoCompleteTextView
++                        android:id="@+id/idEdtCity"
++                        android:layout_width="match_parent"
++                        android:layout_height="match_parent"
++                        android:background="@android:color/transparent"
++                        android:importantForAutofill="no"
++                        android:textColorHint="@color/white"
++                        android:inputType="text"
++                        android:backgroundTint="@color/black_shade_1"
++                        android:singleLine="true"
++                        android:textColor="@color/white"
++                        android:textSize="20sp" />
+ 
+ 
+ 
+-            </com.google.android.material.textfield.TextInputLayout>
+-            <ImageButton
+-                android:id="@+id/idTVSearch"
+-                android:layout_width="wrap_content"
+-                android:layout_height="wrap_content"
+-                android:layout_gravity="center"
++                </com.google.android.material.textfield.TextInputLayout>
++                <ImageButton
++                    android:id="@+id/idTVSearch"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:layout_gravity="center"
+ 
+-                android:background="@android:color/transparent"
+-                android:src="@drawable/ic_baseline_search_24"
+-                app:tint="@color/white" />
+-        </LinearLayout>
++                    android:background="@android:color/transparent"
++                    android:src="@drawable/ic_baseline_search_24"
++                    app:tint="@color/white" />
++            </LinearLayout>
+ 
+-        <TextView
+-            android:id="@+id/idTVTemperture"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:layout_below="@id/Linear1"
+-            android:layout_marginStart="10dp"
+-            android:layout_marginTop="10dp"
+-            android:layout_marginEnd="10dp"
+-            android:layout_marginBottom="10dp"
+-            android:gravity="center_horizontal"
+-            android:padding="5dp"
+-            android:textColor="@color/white"
+-            android:textSize="70dp"
+-            tools:ignore="NotSibling" />
++            <TextView
++                android:id="@+id/idTVTemperture"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:layout_below="@id/Linear1"
++                android:layout_marginStart="10dp"
++                android:layout_marginTop="10dp"
++                android:layout_marginEnd="10dp"
++                android:layout_marginBottom="10dp"
++                android:gravity="center_horizontal"
++                android:padding="5dp"
++                android:textColor="@color/white"
++                android:textSize="70dp"
++                tools:ignore="NotSibling" />
+ 
+-        <ImageView
+-            android:id="@+id/idIVIcon"
+-            android:layout_width="150dp"
+-            android:layout_height="150dp"
+-            android:layout_below="@id/idTVTemperture"
+-            android:layout_centerHorizontal="true"
+-            android:layout_marginStart="10dp"
+-            android:layout_marginTop="10dp"
+-            android:layout_marginEnd="10dp"
+-            android:layout_marginBottom="10dp" />
++            <ImageView
++                android:id="@+id/idIVIcon"
++                android:layout_width="150dp"
++                android:layout_height="150dp"
++                android:layout_below="@id/idTVTemperture"
++                android:layout_centerHorizontal="true"
++                android:layout_marginStart="10dp"
++                android:layout_marginTop="10dp"
++                android:layout_marginEnd="10dp"
++                android:layout_marginBottom="10dp" />
+ 
+-        <TextView
+-            android:id="@+id/idTVCondition"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:layout_below="@id/idIVIcon"
+-            android:layout_marginStart="10dp"
+-            android:layout_marginTop="10dp"
+-            android:layout_marginEnd="10dp"
+-            android:layout_marginBottom="10dp"
+-            android:gravity="center"
+-            android:textAlignment="center"
+-            android:textColor="@color/white"
+-            android:textSize="18sp"/>
++            <TextView
++                android:id="@+id/idTVCondition"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:layout_below="@id/idIVIcon"
++                android:layout_marginStart="10dp"
++                android:layout_marginTop="10dp"
++                android:layout_marginEnd="10dp"
++                android:layout_marginBottom="10dp"
++                android:gravity="center"
++                android:textAlignment="center"
++                android:textColor="@color/white"
++                android:textSize="18sp"/>
+ 
+-
+-
+-
+-
+-
+-</RelativeLayout>
+-    <ScrollView
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:scrollbars="none"
+-        android:layout_marginTop="490dp"
+-        android:layout_marginHorizontal="10dp">
+-        <LinearLayout
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:orientation="vertical">
+-            <TextView
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:id="@+id/day1"
+-                android:textColor="@color/white"
+-                android:textSize="18sp"/>
+-            <androidx.recyclerview.widget.RecyclerView
+-                android:id="@+id/idRvWeather"
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:layout_alignParentBottom="true"
+-                android:orientation="horizontal"
+-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+-            <TextView
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:id="@+id/day2"
+-                android:textColor="@color/white"
+-                android:textSize="18sp"/>
+-            <androidx.recyclerview.widget.RecyclerView
+-                android:id="@+id/idRvWeather1"
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:layout_alignParentBottom="true"
+-                android:orientation="horizontal"
+-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+-            <TextView
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:id="@+id/day3"
+-                android:textColor="@color/white"
+-                android:textSize="18sp"/>
+-            <androidx.recyclerview.widget.RecyclerView
+-                android:id="@+id/idRvWeather2"
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:layout_alignParentBottom="true"
+-                android:orientation="horizontal"
+-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+-            <TextView
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:id="@+id/day4"
+-                android:textColor="@color/white"
+-                android:textSize="18sp"/>
+-            <androidx.recyclerview.widget.RecyclerView
+-                android:id="@+id/idRvWeather3"
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:layout_alignParentBottom="true"
+-                android:orientation="horizontal"
+-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
++            <ScrollView
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:scrollbars="none"
++                android:layout_marginTop="490dp"
++                android:layout_marginHorizontal="10dp">
++                <LinearLayout
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:orientation="vertical">
++                    <TextView
++                        android:layout_width="match_parent"
++                        android:layout_height="wrap_content"
++                        android:id="@+id/day1"
++                        android:textColor="@color/white"
++                        android:textSize="18sp"/>
++                    <androidx.recyclerview.widget.RecyclerView
++                        android:id="@+id/idRvWeather"
++                        android:layout_width="match_parent"
++                        android:layout_height="wrap_content"
++                        android:layout_alignParentBottom="true"
++                        android:orientation="horizontal"
++                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
++                    <TextView
++                        android:layout_width="match_parent"
++                        android:layout_height="wrap_content"
++                        android:id="@+id/day2"
++                        android:textColor="@color/white"
++                        android:textSize="18sp"/>
++                    <androidx.recyclerview.widget.RecyclerView
++                        android:id="@+id/idRvWeather1"
++                        android:layout_width="match_parent"
++                        android:layout_height="wrap_content"
++                        android:layout_alignParentBottom="true"
++                        android:orientation="horizontal"
++                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
++                    <TextView
++                        android:layout_width="match_parent"
++                        android:layout_height="wrap_content"
++                        android:id="@+id/day3"
++                        android:textColor="@color/white"
++                        android:textSize="18sp"/>
++                    <androidx.recyclerview.widget.RecyclerView
++                        android:id="@+id/idRvWeather2"
++                        android:layout_width="match_parent"
++                        android:layout_height="wrap_content"
++                        android:layout_alignParentBottom="true"
++                        android:orientation="horizontal"
++                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
++                    <TextView
++                        android:layout_width="match_parent"
++                        android:layout_height="wrap_content"
++                        android:id="@+id/day4"
++                        android:textColor="@color/white"
++                        android:textSize="18sp"/>
++                    <androidx.recyclerview.widget.RecyclerView
++                        android:id="@+id/idRvWeather3"
++                        android:layout_width="match_parent"
++                        android:layout_height="wrap_content"
++                        android:layout_alignParentBottom="true"
++                        android:orientation="horizontal"
++                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+ 
+ 
+-        </LinearLayout>
++                </LinearLayout>
++            </ScrollView>
++
++
++
++
++        </RelativeLayout>
++
++
++
++
++
++
+     </ScrollView>
++
++
+ </RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/res/anim/button_anim.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/anim/button_anim.xml b/app/src/main/res/anim/button_anim.xml
+new file mode 100644
+--- /dev/null	(date 1653491330794)
++++ b/app/src/main/res/anim/button_anim.xml	(date 1653491330794)
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="utf-8"?>
++<set xmlns:android="http://schemas.android.com/apk/res/android">
++
++</set>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n        <entry key=\"..\\:/Users/Samsung/Desktop/jaga_weather/app/src/main/res/layout/activity_main.xml\" value=\"0.1\" />\r\n        <entry key=\"..\\:/Users/Samsung/Desktop/jaga_weather/app/src/main/res/layout/activity_themes.xml\" value=\"0.358695652173913\" />\r\n        <entry key=\"..\\:/Users/Samsung/Desktop/jaga_weather/app/src/main/res/layout/forecast_new.xml\" value=\"0.24791666666666667\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"Android Studio default JDK\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision d5153590c457f444a73fe5689757c1e197bb73c3)
++++ b/.idea/misc.xml	(date 1653492844631)
+@@ -3,6 +3,9 @@
+   <component name="DesignSurface">
+     <option name="filePathToZoomLevelMap">
+       <map>
++        <entry key="..\:/Users/123/Desktop/jaga/jaga_design/app/src/main/res/layout/activity_main.xml" value="0.35625" />
++        <entry key="..\:/Users/123/Desktop/jaga/jaga_design/app/src/main/res/layout/activity_themes.xml" value="0.35625" />
++        <entry key="..\:/Users/123/Desktop/jaga/jaga_design/app/src/main/res/layout/forecast_new.xml" value="0.35625" />
+         <entry key="..\:/Users/Samsung/Desktop/jaga_weather/app/src/main/res/layout/activity_main.xml" value="0.1" />
+         <entry key="..\:/Users/Samsung/Desktop/jaga_weather/app/src/main/res/layout/activity_themes.xml" value="0.358695652173913" />
+         <entry key="..\:/Users/Samsung/Desktop/jaga_weather/app/src/main/res/layout/forecast_new.xml" value="0.24791666666666667" />
