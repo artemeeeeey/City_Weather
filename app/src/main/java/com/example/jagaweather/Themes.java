@@ -10,6 +10,8 @@ import android.transition.Fade;
 import android.transition.Slide;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -37,7 +39,7 @@ import java.io.PrintWriter;
         ib5 = findViewById(R.id.IB5);
         ib = findViewById(R.id.IB);
         back = findViewById(R.id.Back);
-
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.theme_anim);
 
         ib1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +48,7 @@ import java.io.PrintWriter;
                 file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
                 write_in_file(1,file_theme);
                 Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
+                view.startAnimation(animAlpha);
             }
         });
         ib2.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +58,7 @@ import java.io.PrintWriter;
                 file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
                 write_in_file(2,file_theme);
                 Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
+                view.startAnimation(animAlpha);
             }
         });
         ib3.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +68,7 @@ import java.io.PrintWriter;
                 file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
                 write_in_file(3,file_theme);
                 Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
+                view.startAnimation(animAlpha);
             }
         });
         ib4.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +78,7 @@ import java.io.PrintWriter;
                 file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
                 write_in_file(4,file_theme);
                 Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
+                view.startAnimation(animAlpha);
             }
         });
         ib.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +88,7 @@ import java.io.PrintWriter;
                 file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
                 write_in_file(5,file_theme);
                 Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
+                view.startAnimation(animAlpha);
             }
         });
         ib5.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +98,7 @@ import java.io.PrintWriter;
                 file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
                 write_in_file(6,file_theme);
                 Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
+                view.startAnimation(animAlpha);
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
