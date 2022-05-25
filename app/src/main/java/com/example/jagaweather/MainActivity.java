@@ -48,7 +48,7 @@ import org.jsoup.select.Elements;
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener{
     private static  final  String TAG = "Siwpe Position";
     private  float y1,y2;
-    private static  int MIN_DISTANCE = 300;
+    private static  int MIN_DISTANCE = 200;
     private GestureDetector gestureDetector;
     AutoCompleteTextView city_name;
     TextView write_city_name, weather;
