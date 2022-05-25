@@ -23,10 +23,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/city_description"
+                android:textSize="25dp"
                 android:layout_below="@+id/idTownImage"
                 android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/black_shade_1" />
+                android:layout_marginTop="20dp" />
 
 
         </RelativeLayout>
