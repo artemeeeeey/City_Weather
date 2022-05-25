@@ -37,7 +37,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.window.SplashScreen;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -59,9 +58,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     ImageView idIVIcon;
 
     File file_theme;
-    File temps_f;
-    File description_f;
-    File time_f;
     File city_f;
 
     TextView condition;
@@ -73,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     String city_description;
     String theme;
     String day_today;
+    String city;
 
     private Thread sThread;
     private Runnable runnable;
@@ -138,27 +135,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             e.printStackTrace();
         }
 
-        temps_f = new File("/data/data/com.example.jagaweather/files/temps_f");
-        try {
-            checkFile(temps_f);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        description_f = new File("/data/data/com.example.jagaweather/files/description_f");
-        try {
-            checkFile(description_f);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        time_f = new File("/data/data/com.example.jagaweather/files/time_f");
-        try {
-            checkFile(time_f);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         this.gestureDetector = new GestureDetector(MainActivity.this,this);
         try {
             Scanner scanner = new Scanner(file_theme);
@@ -187,8 +163,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             e.printStackTrace();
         }
 
-
-
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, towns);
         city_name.setAdapter(adapter);
 
@@ -198,7 +172,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             public void onClick(View view) {
                 view.startAnimation(animAlpha);
 
-//                init();
+                init();
 
                 if (city_name.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "Поле не может быть пустым", Toast.LENGTH_SHORT).show();
@@ -220,7 +194,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                         }
 
                         else if (workInfo != null && workInfo.getState().isFinished()){
-
 
                             temps = workInfo.getOutputData().getStringArray("temps");
                             description_a = workInfo.getOutputData().getStringArray("description");
@@ -455,25 +428,18 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         }
     }
 
-    public void showData(File file){
+    public void showData(File file, String[] data){
         try {
-            Scanner scanner = new Scanner(file);
             int i = 0;
+            Scanner scanner = new Scanner(file);
             while (scanner.hasNext()){
-                if (file.getName().equals("temps_f") && i == 0){
-                    current_temp = scanner.next();
-                    i++;
-                }
-                else if (file.getName().equals("description_f") && i == 0){
-                    current_description = scanner.next();
-                    i++;
-                }
-                else{
-
-                }
+                Log.d("file", scanner.next());
+                data[i] = scanner.next();
+                i++;
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
     }
 }

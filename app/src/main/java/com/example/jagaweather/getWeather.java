@@ -16,6 +16,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -26,7 +27,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class getWeather extends Worker {
     String city = getInputData().getString("city");
     String appid = "238d9c2c4369d56d04e268ffe5b14143";
-    String path = "https://api.openweathermap.org/data/2.5/forecast?q=" + city
+    String path = "http://api.openweathermap.org/data/2.5/forecast?q=" + city
             + "&appid=" + appid + "&units=metric&lang=ru";
     Data output = new Data.Builder().build();
     String[] temps = new String[40];
@@ -42,14 +43,14 @@ public class getWeather extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        HttpsURLConnection httpsURLConnection = null;
+        HttpURLConnection httpURLConnection = null;
         BufferedReader bufferedReader = null;
 
         try {
             URL url = new URL(path);
-            httpsURLConnection = (HttpsURLConnection) url.openConnection();
-            httpsURLConnection.connect();
-            InputStream inputStream = httpsURLConnection.getInputStream();
+            httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.connect();
+            InputStream inputStream = httpURLConnection.getInputStream();
             bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
             StringBuffer stringBuffer = new StringBuffer();
@@ -98,8 +99,8 @@ public class getWeather extends Worker {
             e.printStackTrace();
             return Result.failure();
         } finally {
-            if (httpsURLConnection != null) {
-                httpsURLConnection.disconnect();
+            if (httpURLConnection != null) {
+                httpURLConnection.disconnect();
             }
 
             if (bufferedReader != null) {
