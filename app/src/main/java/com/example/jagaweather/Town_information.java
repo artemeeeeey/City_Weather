@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.io.File;
@@ -30,7 +31,7 @@ public class Town_information extends AppCompatActivity {
         local_time_tv = findViewById(R.id.local_time);
         base_tv = findViewById(R.id.base);
         String theme = "";
-        background = findViewById(R.id.Background);
+        RelativeLayout lay = (RelativeLayout) findViewById(R.id.theme2);
 
         Intent intent = getIntent();
         description = intent.getStringExtra("description");
@@ -47,21 +48,21 @@ public class Town_information extends AppCompatActivity {
                 theme = scanner.next();
                 System.out.println("hry" + theme);
                 if (theme.equals("1")) {
-                    background.setImageResource(R.drawable.sprin);
+                    lay.setBackgroundResource(R.drawable.sprin);
                 } else if (theme.equals("2")) {
-                    background.setImageResource(R.drawable.aut);
+                    lay.setBackgroundResource(R.drawable.aut);
                 }
                 else if (theme.equals("3")) {
-                    background.setImageResource(R.drawable.night);
+                    lay.setBackgroundResource(R.drawable.night);
                 }
                 else if (theme.equals("4")) {
-                    background.setImageResource(R.drawable.red);
+                    lay.setBackgroundResource(R.drawable.red);
                 }
                 else if (theme.equals("5")) {
-                    background.setImageResource(R.drawable.idk);
+                    lay.setBackgroundResource(R.drawable.idk);
                 }
                 else if (theme.equals("6")) {
-                    background.setImageResource(R.drawable.purple);
+                    lay.setBackgroundResource(R.drawable.purple);
                 }
             }
         } catch (FileNotFoundException e) {
