@@ -63,8 +63,6 @@ public class MainActivity extends AppCompatActivity {
     String[] time = new String[8];
     int images[] = new int[8];
     String[] temps, feels_like_a, description_a, time_a;
-    double lon, lat;
-    String day_today;
     String city_description;
     String theme;
 
@@ -78,10 +76,6 @@ public class MainActivity extends AppCompatActivity {
     String current_temp;
     String feels_like;
     String current_description;
-
-    //location stuff
-    Geocoder geocoder;
-    List<Address> addresses;
 
     //hints
     String cities;
@@ -185,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("state", workInfo.getState().toString());
 
                         if (workInfo.getState().toString().equals("FAILED")){
-                            Toast.makeText(getApplicationContext(), "Попробуйте ещё", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Ошибка подключения к сервису...", Toast.LENGTH_SHORT).show();
                         }
 
                         else if (workInfo != null && workInfo.getState().isFinished()){
@@ -341,11 +335,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void getCityInfo(){
         try {
-            doc = Jsoup.connect("https://www.google.com/search?q=Уфа").get();
-            Elements description = doc.getElementsByClass("PZPZlf hb8SAc");
-            city_description = description.text().substring(7);
-            Log.d("parse_title", description.text());
-
+            doc = Jsoup.connect("https://www.google.com/search?q=" + city_name.getText().toString()).get();
+            if (doc.equals(null)){
+                Toast.makeText(getApplicationContext(), "Описание города недоступно...", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Elements description = doc.getElementsByClass("PZPZlf hb8SAc");
+                city_description = description.text().substring(7);
+                Log.d("parse_title", description.text());
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

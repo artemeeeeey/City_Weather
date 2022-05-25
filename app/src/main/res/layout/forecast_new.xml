@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/transparent"
+        android:background="@color/black_shade_1"
         >
 
 
@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="@color/white"
+            android:fontFamily="@font/montserrat_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,6 +48,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="@color/white"
+            android:fontFamily="@font/montserrat_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

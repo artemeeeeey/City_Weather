@@ -25,9 +25,8 @@
                 android:id="@+id/IvBack"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
                 android:background="@color/black_shade_1"
-                />
+                android:scaleType="centerCrop" />
 
             <ImageButton
                 android:id="@+id/Themes"
@@ -47,6 +46,7 @@
                 android:gravity="center"
                 android:padding="20dp"
                 android:textAlignment="center"
+                android:fontFamily="@font/montserrat_light"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
@@ -81,6 +81,7 @@
                         android:inputType="text"
                         android:backgroundTint="@color/black_shade_1"
                         android:singleLine="true"
+                        android:fontFamily="@font/montserrat_light"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -109,6 +110,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center_horizontal"
                 android:padding="5dp"
+                android:fontFamily="@font/montserrat_light"
                 android:textColor="@color/white"
                 android:textSize="70dp"
                 tools:ignore="NotSibling" />
@@ -133,6 +135,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/montserrat_light"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:textColor="@color/white"
@@ -153,6 +156,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/day1"
                         android:textColor="@color/white"
+                        android:fontFamily="@font/montserrat_light"
                         android:textSize="18sp"/>
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/idRvWeather"
@@ -166,6 +170,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/day2"
                         android:textColor="@color/white"
+                        android:fontFamily="@font/montserrat_light"
                         android:textSize="18sp"/>
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/idRvWeather1"
@@ -179,6 +184,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/day3"
                         android:textColor="@color/white"
+                        android:fontFamily="@font/montserrat_light"
                         android:textSize="18sp"/>
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/idRvWeather2"
@@ -192,6 +198,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/day4"
                         android:textColor="@color/white"
+                        android:fontFamily="@font/montserrat_light"
                         android:textSize="18sp"/>
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/idRvWeather3"
@@ -204,10 +211,6 @@
 
                 </LinearLayout>
             </ScrollView>
-
-
-
-
         </RelativeLayout>
 
 
