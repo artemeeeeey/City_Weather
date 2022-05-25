@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     String city_data;
     String[] city_data_a;
-    String population;
     String local_time;
     String base_date;
 
@@ -291,7 +290,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                             Intent back1 = new Intent(MainActivity.this,Town_information.class);
                             back1.putExtra("description", city_description);
                             back1.putExtra("base", base_date);
-                            back1.putExtra("population", population);
                             back1.putExtra("local_time", local_time);
                             startActivity(back1, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
                         }
@@ -372,13 +370,16 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             city_data = base.text();
             city_data_a = city_data.split(" ");
 
-            base_date = city_data_a[2] + "г.";
-            local_time = city_data_a[12] + " " + city_data_a[13];
-            population = city_data_a[14] + " " + city_data_a[15] + " " + city_data_a[16] + ")";
-            Log.d("data", base_date + " " + local_time + " " + population);
+            for (int i = 0; i < city_data_a.length; i++){
+                if (city_data_a[i].equals("г.")){
+                    base_date = city_data_a[i - 1] + " " + city_data_a[i];
+                }
+                else if (city_data_a[i].contains(":")){
+                    local_time = city_data_a[i - 1] + " " + city_data_a[i];
+                }
+            }
+            Log.d("data", base_date + " " + local_time);
             city_description = description.text().substring(8);
-            Log.d("base", base_date);
-            Log.d("parse_description", city_description);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -414,36 +415,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         return false;
     }
 
-    public void write_in_file(File weather_data, String[] data) {
-        PrintWriter writer = null;
-        try {
-            writer = new PrintWriter(new FileWriter(weather_data));
-            for (int i = 0; i < data.length; i++){
-                writer.println(data[i]);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void checkFile(File file) throws IOException {
         if (!file.exists()){
             file.createNewFile();
         }
-    }
-
-    public void showData(File file, String[] data){
-        try {
-            int i = 0;
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNext()){
-                Log.d("file", scanner.next());
-                data[i] = scanner.next();
-                i++;
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
     }
 }

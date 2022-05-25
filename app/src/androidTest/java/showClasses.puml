@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener{
+    public void setArrays(String[] temp, String[] time, int[] images, int position)
+    public boolean onTouchEvent(MotionEvent event)
+    public void clearArray()
+    public void setDay(String day_today)
+    private void init()
+    private void getCityInfo()
+    public void checkFile(File file)
+}
+
+class getWeather extends Worker{
+    public getWeather(@NonNull Context context, @NonNull WorkerParameters workerParams)
+    public Result doWork()
+}
+
+class Myadapter extends RecycleView.Adapter{
+    public Myadapter(Context ct1, String[] weather_future, String[] description, int[] images)
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
+    public int getItemCount()
+    public class MyViewHolde extends RecyclerView
+    public MyViewHolder(@NonNull View itemView)
+}
+
+class Themes extends AppCompatActivity{
+    protected void onCreate(Bundle savedInstanceState)
+    public void write_in_file(int theme,File file_themes)
+}
+
+class Town_information extends AppCompatActivity{
+    protected void onCreate(Bundle savedInstanceState)
+}
+@enduml

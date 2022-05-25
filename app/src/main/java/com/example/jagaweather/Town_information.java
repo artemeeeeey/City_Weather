@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 public class Town_information extends AppCompatActivity {
     ImageView background_towns;
-    TextView city_description,local_time_tv,population_tv,base_tv;
+    TextView city_description,local_time_tv, base_tv;
     String description,local_time,population,base;
     File file_theme;
     ImageView background;
@@ -28,7 +28,6 @@ public class Town_information extends AppCompatActivity {
         setContentView(R.layout.activity_town_information);
         city_description = findViewById(R.id.city_description);
         local_time_tv = findViewById(R.id.local_time);
-        population_tv = findViewById(R.id.population);
         base_tv = findViewById(R.id.base);
         String theme = "";
         background = findViewById(R.id.Background);
@@ -41,7 +40,6 @@ public class Town_information extends AppCompatActivity {
 
         city_description.setText(description);
         local_time_tv.setText("Местное время: " + local_time);
-        population_tv.setText("Популяция: " + population);
         base_tv.setText("Дата основания: " + base);
         try {
             Scanner scanner = new Scanner(file_theme);
