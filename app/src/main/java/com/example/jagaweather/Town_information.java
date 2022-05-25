@@ -1,7 +1,6 @@
 package com.example.jagaweather;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
@@ -32,8 +31,8 @@ public class Town_information extends AppCompatActivity {
         local_time_tv = findViewById(R.id.local_time);
         base_tv = findViewById(R.id.base);
         String theme = "";
-        background = findViewById(R.id.Background);
         RelativeLayout lay = (RelativeLayout) findViewById(R.id.theme2);
+
         Intent intent = getIntent();
         description = intent.getStringExtra("description");
         base = intent.getStringExtra("base");

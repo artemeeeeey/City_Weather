@@ -12,11 +12,11 @@
         android:layout_height="match_parent"
         android:id="@+id/theme2"
         android:background="@color/black_shade_1">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/Background"/>
-
 
         <TextView
             android:id="@+id/city_description"
@@ -50,8 +50,6 @@
             android:gravity="left"
             android:textSize="23sp"/>
 
-
     </RelativeLayout>
-
 
 </RelativeLayout>
