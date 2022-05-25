@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     ImageView idIVIcon;
 
     File file_theme;
-    File city_f;
 
     TextView condition;
     RecyclerView rv,rv1,rv2,rv3;
@@ -68,8 +67,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     String[] temps, feels_like_a, description_a, time_a;
     String city_description;
     String theme;
-    String day_today;
-    String city;
+    String pic;
 
     private Thread sThread;
     private Runnable runnable;
@@ -120,13 +118,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         background = findViewById(R.id.IvBack);
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.button_anim);
 
-        city_f = new File("/data/data/com.example.jagaweather/files/city_f");
-        try {
-            checkFile(city_f);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
         try {
             checkFile(file_theme);
@@ -170,8 +161,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             @Override
             public void onClick(View view) {
                 view.startAnimation(animAlpha);
-
-                init();
 
                 if (city_name.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "Поле не может быть пустым", Toast.LENGTH_SHORT).show();
@@ -241,6 +230,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                             rv3.setAdapter(myadapter3);
                             rv3.setLayoutManager(new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL,false));
                             clearArray();
+                            init();
                         }
                     });
                 }
@@ -293,6 +283,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 if(Math.abs(valueX) > MIN_DISTANCE)
                 {if (y1>y2){
                     Intent back1 = new Intent(MainActivity.this,Town_information.class);
+                    back1.putExtra("description", city_description);
+                    back1.putExtra("pic", pic);
                     startActivity(back1, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
 
                 }
@@ -367,14 +359,12 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     private void getCityInfo(){
         try {
             doc = Jsoup.connect("https://www.google.com/search?q=" + city_name.getText().toString()).get();
-            if (doc.equals(null)){
-                Toast.makeText(getApplicationContext(), "Описание города недоступно...", Toast.LENGTH_SHORT).show();
-            }
-            else{
-                Elements description = doc.getElementsByClass("PZPZlf hb8SAc");
-                city_description = description.text().substring(7);
-                Log.d("parse_title", description.text());
-            }
+            Elements description = doc.getElementsByClass("PZPZlf hb8SAc");
+            Elements pic_http = doc.getElementsByClass("uhHOwf BYbUcd");
+            pic = pic_http.toString();
+            Log.d("pic", pic);
+            city_description = description.text().substring(8);
+            Log.d("parse_title", city_description);
         } catch (IOException e) {
             e.printStackTrace();
         }
