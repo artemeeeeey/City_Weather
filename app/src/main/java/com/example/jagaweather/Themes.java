@@ -3,6 +3,7 @@
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Explode;
 import android.transition.Fade;
@@ -11,16 +12,22 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
  public class Themes extends AppCompatActivity {
     ImageButton ib1,ib2,ib3,ib4;
     Button back;
-
+    File file_theme;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
-        getWindow().setEnterTransition(new Fade());
-
+        getWindow().setExitTransition(new Fade());
+        file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_themes);
         ib1 = findViewById(R.id.IB1);
@@ -33,20 +40,28 @@ import android.widget.ImageButton;
         ib1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
+                file_theme.delete();
+                file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
+                write_in_file(1,file_theme);
+                Toast.makeText(getApplicationContext(), "Theme was set", Toast.LENGTH_SHORT).show();
             }
         });
         ib2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                file_theme.delete();
+                file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
+                write_in_file(2,file_theme);
+                Toast.makeText(getApplicationContext(), "Theme was set", Toast.LENGTH_SHORT).show();
             }
         });
         ib3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                file_theme.delete();
+                file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
+                write_in_file(3,file_theme);
+                Toast.makeText(getApplicationContext(), "Theme was set", Toast.LENGTH_SHORT).show();
             }
         });
         ib4.setOnClickListener(new View.OnClickListener() {
@@ -58,12 +73,21 @@ import android.widget.ImageButton;
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(Themes.this, MainActivity.class);
+                startActivity(i, ActivityOptions.makeSceneTransitionAnimation(Themes.this).toBundle());
             }
         });
     }
 
-     public void write_in_file() {
+     public void write_in_file(int theme,File file_themes) {
+         PrintWriter writer = null;
+         try {
+             writer = new PrintWriter(new FileWriter(file_themes));
+             writer.println(theme);
+             writer.close();
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
 
      }
  }

@@ -5,19 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black_shade_1">
+
     <ImageButton
-        android:background="@drawable/sprin"
         android:id="@+id/IB1"
         android:layout_width="100dp"
         android:layout_height="200dp"
+        android:layout_marginHorizontal="15dp"
         android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="20dp"/>
+        android:background="@drawable/sprin" />
 
     <ImageButton
         android:id="@+id/IB2"
         android:layout_width="100dp"
         android:layout_height="200dp"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="15dp"
         android:layout_marginTop="10dp"
 
         android:layout_toRightOf="@+id/IB1"
@@ -27,24 +28,25 @@
         android:id="@+id/IB3"
         android:layout_width="100dp"
         android:layout_height="200dp"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="15dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/IB2"
         android:background="@drawable/night" />
+
     <ImageButton
         android:id="@+id/IB4"
         android:layout_width="100dp"
-        android:layout_below="@+id/IB1"
-        android:layout_marginTop="10dp"
         android:layout_height="200dp"
-        android:layout_marginHorizontal="20dp"/>
+        android:layout_below="@+id/IB1"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="10dp" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="100dp"
         android:id="@+id/Back"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="670dp"
         android:layout_marginBottom="10dp" />
 
 
