@@ -29,6 +29,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.transition.Slide;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
@@ -47,8 +49,11 @@ import org.jsoup.select.Elements;
 
 //238d9c2c4369d56d04e268ffe5b14143 == open weather map api
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener{
+    private static  final  String TAG = "Siwpe Position";
+    private  float y1,y2;
+    private static  int MIN_DISTANCE = 159;
+    private GestureDetector gestureDetector;
     AutoCompleteTextView city_name;
     TextView write_city_name, weather;
     TextView day1, day2, day3, day4;
@@ -116,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
         background = findViewById(R.id.IvBack);
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.button_anim);
         file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
+        this.gestureDetector = new GestureDetector(MainActivity.this,this);
         if(!file_theme.exists()){
             try {
                 file_theme.createNewFile();
@@ -248,6 +254,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -270,7 +277,34 @@ public class MainActivity extends AppCompatActivity {
             a += 1;
         }
     }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        gestureDetector.onTouchEvent(event);
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                y1 = event.getY();
 
+                break;
+            case MotionEvent.ACTION_UP:
+                y2 = event.getY();
+
+                float valueX = y2 - y1;
+
+
+                if(Math.abs(valueX) > MIN_DISTANCE)
+                {if (y1>y2){
+                    Intent back1 = new Intent(MainActivity.this,Town_information.class);
+                    startActivity(back1, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
+
+                }
+
+
+
+                }
+        }
+
+        return super.onTouchEvent(event);
+    }
     public void clearArray(){
         weather_future = new String[8];
         time = new String[8];
@@ -347,5 +381,35 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public boolean onDown(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        return false;
     }
 }
