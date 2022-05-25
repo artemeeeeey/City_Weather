@@ -67,7 +67,12 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     String[] temps, feels_like_a, description_a, time_a;
     String city_description;
     String theme;
-    String pic;
+
+    String city_data;
+    String[] city_data_a;
+    String population;
+    String local_time;
+    String base_date;
 
     private Thread sThread;
     private Runnable runnable;
@@ -230,6 +235,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                             rv3.setAdapter(myadapter3);
                             rv3.setLayoutManager(new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL,false));
                             clearArray();
+
                             init();
                         }
                     });
@@ -272,7 +278,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 y1 = event.getY();
-
                 break;
             case MotionEvent.ACTION_UP:
                 y2 = event.getY();
@@ -280,13 +285,13 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 float valueX = y2 - y1;
 
 
-                if(Math.abs(valueX) > MIN_DISTANCE)
-                {if (y1>y2){
-                    Intent back1 = new Intent(MainActivity.this,Town_information.class);
-                    back1.putExtra("description", city_description);
-                    back1.putExtra("pic", pic);
-                    startActivity(back1, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
-
+                if(Math.abs(valueX) > MIN_DISTANCE) {
+                    if (y1>y2){
+                        if (!city_name.getText().toString().equals("")){
+                            Intent back1 = new Intent(MainActivity.this,Town_information.class);
+                            back1.putExtra("description", city_description);
+                            startActivity(back1, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
+                        }
                 }
                 }
         }
@@ -360,11 +365,17 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         try {
             doc = Jsoup.connect("https://www.google.com/search?q=" + city_name.getText().toString()).get();
             Elements description = doc.getElementsByClass("PZPZlf hb8SAc");
-            Elements pic_http = doc.getElementsByClass("uhHOwf BYbUcd");
-            pic = pic_http.toString();
-            Log.d("pic", pic);
+            Elements base = doc.getElementsByClass("LrzXr kno-fv wHYlTd z8gr9e");
+            city_data = base.text();
+            city_data_a = city_data.split(" ");
+
+            base_date = city_data_a[2] + "г.";
+            local_time = city_data_a[12] + " " + city_data_a[13];
+            population = city_data_a[14] + " " + city_data_a[15] + " " + city_data_a[16] + ")";
+            Log.d("data", base_date + " " + local_time + " " + population);
             city_description = description.text().substring(8);
-            Log.d("parse_title", city_description);
+            Log.d("base", base_date);
+            Log.d("parse_description", city_description);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -6,31 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".Town_information"
     android:background="@color/black_shade_1">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/town">
-
-        <ImageView
-            android:id="@+id/idTownImage"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:background="@color/black_shade_1" />
-
-        <TextView
-            android:id="@+id/city_description"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/idTownImage"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="20dp"
-            android:textSize="20dp" />
+            android:layout_height="match_parent"
+            android:background="@drawable/town">
+
+            <TextView
+                android:id="@+id/city_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="20dp"
+                android:textSize="18dp" />
 
 
-    </RelativeLayout>
+        </RelativeLayout>
 
 
 </RelativeLayout>
