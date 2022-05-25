@@ -24,8 +24,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat_light"
             android:gravity="fill"
-            android:textSize="25dp" />
+            android:textSize="23sp"/>
 
         <TextView
             android:id="@+id/local_time"
@@ -34,8 +35,9 @@
             android:layout_marginHorizontal="10dp"
             android:layout_below="@+id/city_description"
            android:layout_marginTop="20dp"
+            android:fontFamily="@font/montserrat_light"
             android:gravity="left"
-            android:textSize="25dp" />
+            android:textSize="23sp"/>
 
         <TextView
             android:id="@+id/base"
@@ -44,8 +46,9 @@
             android:layout_below="@+id/local_time"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/montserrat_light"
             android:gravity="left"
-            android:textSize="25dp" />
+            android:textSize="23sp"/>
 
 
     </RelativeLayout>
