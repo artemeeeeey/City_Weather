@@ -23,7 +23,6 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Fade;
-import android.transition.Slide;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -58,8 +57,13 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     ImageView background;
     ImageButton themes;
     ImageView idIVIcon;
+
     File file_theme;
-    File weather_data;
+    File temps_f;
+    File description_f;
+    File time_f;
+    File city_f;
+
     TextView condition;
     RecyclerView rv,rv1,rv2,rv3;
     String weather_future[] = new String[8];
@@ -68,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     String[] temps, feels_like_a, description_a, time_a;
     String city_description;
     String theme;
+    String day_today;
 
     private Thread sThread;
     private Runnable runnable;
@@ -119,25 +124,42 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         background = findViewById(R.id.IvBack);
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.button_anim);
 
-        weather_data =  new File("/data/data/com.example.jagaweather/files/weather_data");
-        if(!weather_data.exists()){
-            try {
-                weather_data.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        city_f = new File("/data/data/com.example.jagaweather/files/city_f");
+        try {
+            checkFile(city_f);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
-        this.gestureDetector = new GestureDetector(MainActivity.this,this);
-        if(!file_theme.exists()){
-            try {
-                file_theme.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            checkFile(file_theme);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
+        temps_f = new File("/data/data/com.example.jagaweather/files/temps_f");
+        try {
+            checkFile(temps_f);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        description_f = new File("/data/data/com.example.jagaweather/files/description_f");
+        try {
+            checkFile(description_f);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        time_f = new File("/data/data/com.example.jagaweather/files/time_f");
+        try {
+            checkFile(time_f);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        this.gestureDetector = new GestureDetector(MainActivity.this,this);
         try {
             Scanner scanner = new Scanner(file_theme);
             if(scanner.hasNext()) {
@@ -165,6 +187,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             e.printStackTrace();
         }
 
+
+
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, towns);
         city_name.setAdapter(adapter);
 
@@ -174,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             public void onClick(View view) {
                 view.startAnimation(animAlpha);
 
-                init();
+//                init();
 
                 if (city_name.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "Поле не может быть пустым", Toast.LENGTH_SHORT).show();
@@ -197,16 +221,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
                         else if (workInfo != null && workInfo.getState().isFinished()){
 
-                            if (!workInfo.getOutputData().toString().equals("Data {}")){
-                                temps = workInfo.getOutputData().getStringArray("temps");
-                                write_in_file(weather_data, temps);
-                                description_a = workInfo.getOutputData().getStringArray("description");
-                                write_in_file(weather_data, temps);
-                                feels_like_a = workInfo.getOutputData().getStringArray("feels_like");
-                                write_in_file(weather_data, temps);
-                                time_a = workInfo.getOutputData().getStringArray("time");
-                                write_in_file(weather_data, temps);
-                            }
 
                             temps = workInfo.getOutputData().getStringArray("temps");
                             description_a = workInfo.getOutputData().getStringArray("description");
@@ -272,12 +286,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         });
     }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
     public void setArrays(String[] temp, String[] time, int[] images, int position){
         int a = 0;
 
@@ -315,14 +323,12 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                     startActivity(back1, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
 
                 }
-
-
-
                 }
         }
 
         return super.onTouchEvent(event);
     }
+
     public void clearArray(){
         weather_future = new String[8];
         time = new String[8];
@@ -431,16 +437,43 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         return false;
     }
 
-    public void write_in_file(File weather_data, String[] array) {
+    public void write_in_file(File weather_data, String[] data) {
         PrintWriter writer = null;
         try {
             writer = new PrintWriter(new FileWriter(weather_data));
-            for (int i = 0; i < 40; i++){
-                writer.println(array[i]);
+            for (int i = 0; i < data.length; i++){
+                writer.println(data[i]);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    public void checkFile(File file) throws IOException {
+        if (!file.exists()){
+            file.createNewFile();
+        }
+    }
+
+    public void showData(File file){
+        try {
+            Scanner scanner = new Scanner(file);
+            int i = 0;
+            while (scanner.hasNext()){
+                if (file.getName().equals("temps_f") && i == 0){
+                    current_temp = scanner.next();
+                    i++;
+                }
+                else if (file.getName().equals("description_f") && i == 0){
+                    current_description = scanner.next();
+                    i++;
+                }
+                else{
+
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

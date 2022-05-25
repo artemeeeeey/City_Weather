@@ -38,5 +38,4 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation "androidx.work:work-runtime:2.7.1"
     implementation 'org.jsoup:jsoup:1.13.1'
-    implementation 'com.google.android.gms:play-services-location:19.0.1'
 }
