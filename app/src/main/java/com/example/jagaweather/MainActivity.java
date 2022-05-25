@@ -31,6 +31,8 @@ import android.transition.Slide;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
@@ -118,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         day4 = findViewById(R.id.day4);
         themes = findViewById(R.id.Themes);
         background = findViewById(R.id.IvBack);
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.button_anim);
         file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
         if(!file_theme.exists()){
             try {
@@ -153,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                view.startAnimation(animAlpha);
 
                 init();
 
