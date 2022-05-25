@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
  public class Themes extends AppCompatActivity {
-    ImageButton ib1,ib2,ib3,ib4;
+    ImageButton ib1,ib2,ib3,ib4,ib;
     Button back;
     File file_theme;
     @Override
@@ -34,6 +34,7 @@ import java.io.PrintWriter;
         ib2 = findViewById(R.id.IB2);
         ib3 = findViewById(R.id.IB3);
         ib4 = findViewById(R.id.IB4);
+        ib = findViewById(R.id.IB);
         back = findViewById(R.id.Back);
 
 
@@ -43,7 +44,7 @@ import java.io.PrintWriter;
                 file_theme.delete();
                 file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
                 write_in_file(1,file_theme);
-                Toast.makeText(getApplicationContext(), "Theme was set", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
             }
         });
         ib2.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +53,7 @@ import java.io.PrintWriter;
                 file_theme.delete();
                 file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
                 write_in_file(2,file_theme);
-                Toast.makeText(getApplicationContext(), "Theme was set", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
             }
         });
         ib3.setOnClickListener(new View.OnClickListener() {
@@ -61,13 +62,25 @@ import java.io.PrintWriter;
                 file_theme.delete();
                 file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
                 write_in_file(3,file_theme);
-                Toast.makeText(getApplicationContext(), "Theme was set", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
             }
         });
         ib4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                file_theme.delete();
+                file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
+                write_in_file(4,file_theme);
+                Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
+            }
+        });
+        ib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                file_theme.delete();
+                file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
+                write_in_file(5,file_theme);
+                Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
             }
         });
         back.setOnClickListener(new View.OnClickListener() {

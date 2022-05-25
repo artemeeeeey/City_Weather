@@ -142,6 +142,12 @@ public class MainActivity extends AppCompatActivity {
                 else if (theme.equals("3")) {
                     background.setImageResource(R.drawable.night);
                 }
+                else if (theme.equals("4")) {
+                    background.setImageResource(R.drawable.red);
+                }
+                else if (theme.equals("5")) {
+                    background.setImageResource(R.drawable.idk);
+                }
 
 
             }
