@@ -148,6 +148,9 @@ public class MainActivity extends AppCompatActivity {
                 else if (theme.equals("5")) {
                     background.setImageResource(R.drawable.idk);
                 }
+                else if (theme.equals("6")) {
+                    background.setImageResource(R.drawable.purple);
+                }
 
 
             }

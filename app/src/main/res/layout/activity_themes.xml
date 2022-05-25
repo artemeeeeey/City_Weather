@@ -7,14 +7,24 @@
     android:background="@color/black_shade_1">
 
     <ImageButton
+        android:id="@+id/IB5"
+        android:layout_width="100dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/IB1"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/IB"
+        android:background="@drawable/purple" />
+
+    <ImageButton
         android:id="@+id/IB"
         android:layout_width="100dp"
         android:layout_height="200dp"
-        android:layout_toRightOf="@id/IB4"
         android:layout_below="@+id/IB1"
-        android:background="@drawable/idk"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/IB4"
+        android:background="@drawable/idk" />
 
     <ImageButton
         android:id="@+id/IB1"
