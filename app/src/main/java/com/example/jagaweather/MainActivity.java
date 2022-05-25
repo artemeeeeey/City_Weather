@@ -38,6 +38,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.window.SplashScreen;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -86,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
         getWindow().setExitTransition(new Fade());
-
+        overridePendingTransition(R.anim.slide_up, R.anim.slide_down);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -264,7 +265,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, Themes.class);
-                startActivity(i, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
+                startActivity(i);
+                overridePendingTransition(R.anim.slide_up,  R.anim.no_animation);
 
             }
         });
