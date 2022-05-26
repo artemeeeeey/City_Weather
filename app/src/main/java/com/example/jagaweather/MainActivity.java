@@ -423,31 +423,4 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             file.createNewFile();
         }
     }
-
-    private File create(String name) {
-        File baseDir;
-
-        if (Build.VERSION.SDK_INT < 8) {
-            baseDir = Environment.getExternalStorageDirectory();
-        } else {
-            baseDir = Environment.getExternalStoragePublicDirectory(Environment.getDataDirectory() + "/data/" + getPackageName());
-        }
-
-        if (baseDir == null)
-            return Environment.getExternalStorageDirectory();
-
-        File folder = new File(baseDir, name);
-
-        if (folder.exists()) {
-            return folder;
-        }
-        if (folder.isFile()) {
-            folder.delete();
-        }
-        if (folder.mkdirs()) {
-            return folder;
-        }
-
-        return Environment.getExternalStorageDirectory();
-    }
 }
