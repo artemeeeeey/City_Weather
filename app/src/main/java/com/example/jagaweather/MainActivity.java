@@ -2,7 +2,9 @@ package com.example.jagaweather;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.transition.Fade;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -54,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     ImageButton themes;
     ImageView idIVIcon;
 
-    File files;
     File file_theme;
 
     TextView condition;
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         background = findViewById(R.id.IvBack);
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.button_anim);
 
-        file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
+        file_theme = new File("/data/data/com.example.jagaweather/file_theme");
         try {
             checkFile(file_theme);
         } catch (IOException e) {
@@ -421,5 +422,32 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         if (!file.exists()){
             file.createNewFile();
         }
+    }
+
+    private File create(String name) {
+        File baseDir;
+
+        if (Build.VERSION.SDK_INT < 8) {
+            baseDir = Environment.getExternalStorageDirectory();
+        } else {
+            baseDir = Environment.getExternalStoragePublicDirectory(Environment.getDataDirectory() + "/data/" + getPackageName());
+        }
+
+        if (baseDir == null)
+            return Environment.getExternalStorageDirectory();
+
+        File folder = new File(baseDir, name);
+
+        if (folder.exists()) {
+            return folder;
+        }
+        if (folder.isFile()) {
+            folder.delete();
+        }
+        if (folder.mkdirs()) {
+            return folder;
+        }
+
+        return Environment.getExternalStorageDirectory();
     }
 }

@@ -26,7 +26,7 @@
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
         getWindow().setExitTransition(new Fade());
-        file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
+        file_theme = new File("/data/data/com.example.jagaweather/file_theme");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_themes);
         ib1 = findViewById(R.id.IB1);
@@ -42,7 +42,7 @@
             @Override
             public void onClick(View view) {
                 file_theme.delete();
-                file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
+                file_theme = new File("/data/data/com.example.jagaweather/file_theme");
                 write_in_file(1,file_theme);
                 Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
                 view.startAnimation(animAlpha);
@@ -52,7 +52,7 @@
             @Override
             public void onClick(View view) {
                 file_theme.delete();
-                file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
+                file_theme = new File("/data/data/com.example.jagaweather/file_theme");
                 write_in_file(2,file_theme);
                 Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
                 view.startAnimation(animAlpha);
@@ -62,7 +62,7 @@
             @Override
             public void onClick(View view) {
                 file_theme.delete();
-                file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
+                file_theme = new File("/data/data/com.example.jagaweather/file_theme");
                 write_in_file(3,file_theme);
                 Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
                 view.startAnimation(animAlpha);
@@ -72,7 +72,7 @@
             @Override
             public void onClick(View view) {
                 file_theme.delete();
-                file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
+                file_theme = new File("/data/data/com.example.jagaweather/file_theme");
                 write_in_file(4,file_theme);
                 Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
                 view.startAnimation(animAlpha);
@@ -82,7 +82,7 @@
             @Override
             public void onClick(View view) {
                 file_theme.delete();
-                file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
+                file_theme = new File("/data/data/com.example.jagaweather/file_theme");
                 write_in_file(5,file_theme);
                 Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
                 view.startAnimation(animAlpha);
@@ -92,7 +92,7 @@
             @Override
             public void onClick(View view) {
                 file_theme.delete();
-                file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
+                file_theme = new File("/data/data/com.example.jagaweather/file_theme");
                 write_in_file(6,file_theme);
                 Toast.makeText(getApplicationContext(), "Фон установлен", Toast.LENGTH_SHORT).show();
                 view.startAnimation(animAlpha);

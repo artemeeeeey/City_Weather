@@ -22,7 +22,7 @@ public class Town_information extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        file_theme = new File("/data/data/com.example.jagaweather/files/file_theme");
+        file_theme = new File("/data/data/com.example.jagaweather/file_theme");
         setContentView(R.layout.activity_town_information);
         city_description = findViewById(R.id.city_description);
         local_time_tv = findViewById(R.id.local_time);
