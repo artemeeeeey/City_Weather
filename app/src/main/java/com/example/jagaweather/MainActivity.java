@@ -1,24 +1,5 @@
 package com.example.jagaweather;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.work.Data;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkManager;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Scanner;
-
-import androidx.work.WorkRequest;
-
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,9 +19,25 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Scanner;
 
 //238d9c2c4369d56d04e268ffe5b14143 == open weather map api
 
@@ -57,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     ImageButton themes;
     ImageView idIVIcon;
 
+    File files;
     File file_theme;
 
     TextView condition;
@@ -369,6 +367,10 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             Elements base = doc.getElementsByClass("LrzXr kno-fv wHYlTd z8gr9e");
             city_data = base.text();
             city_data_a = city_data.split(" ");
+
+            base_date = null;
+            local_time = null;
+            city_description = null;
 
             for (int i = 0; i < city_data_a.length; i++){
                 if (city_data_a[i].equals("г.")){

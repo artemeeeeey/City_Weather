@@ -1,15 +1,12 @@
 package com.example.jagaweather;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,18 +27,35 @@ public class Town_information extends AppCompatActivity {
         city_description = findViewById(R.id.city_description);
         local_time_tv = findViewById(R.id.local_time);
         base_tv = findViewById(R.id.base);
+
+        base = "Неизвестно";
+        local_time = "Неизвестно";
+
         String theme = "";
         RelativeLayout lay = (RelativeLayout) findViewById(R.id.theme2);
 
         Intent intent = getIntent();
+
         description = intent.getStringExtra("description");
-        base = intent.getStringExtra("base");
-        population = intent.getStringExtra("population");
-        local_time = intent.getStringExtra("local_time");
+
+        if(!(intent.getStringExtra("base") == null)){
+            base = intent.getStringExtra("base");
+            base_tv.setText("Дата основания: " + base);
+        }
+        else{
+            base_tv.setText("Дата основания: " + base);
+        }
+
+        if (!(intent.getStringExtra("local_time") == null)){
+            local_time = intent.getStringExtra("local_time");
+            local_time_tv.setText("Местное время: " + local_time);
+        }
+        else{
+            local_time_tv.setText("Местное время: " + local_time);
+        }
 
         city_description.setText(description);
-        local_time_tv.setText("Местное время: " + local_time);
-        base_tv.setText("Дата основания: " + base);
+
         try {
             Scanner scanner = new Scanner(file_theme);
             if(scanner.hasNext()) {

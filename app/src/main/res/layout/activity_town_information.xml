@@ -25,6 +25,7 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/montserrat_light"
+            android:textStyle="bold"
             android:gravity="fill"
             android:textSize="25sp"/>
 
@@ -36,6 +37,7 @@
             android:layout_below="@+id/city_description"
            android:layout_marginTop="20dp"
             android:fontFamily="@font/montserrat_light"
+            android:textStyle="bold"
             android:gravity="left"
             android:textSize="25sp"/>
 
@@ -47,6 +49,7 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/montserrat_light"
+            android:textStyle="bold"
             android:gravity="left"
             android:textSize="25sp"/>
 

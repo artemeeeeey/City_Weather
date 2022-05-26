@@ -20,8 +20,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import javax.net.ssl.HttpsURLConnection;
-
 //https://api.openweathermap.org/data/2.5/forecast?q=ufa&appid=238d9c2c4369d56d04e268ffe5b14143&units=metric&lang=ru
 
 public class getWeather extends Worker {

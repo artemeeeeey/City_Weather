@@ -1,25 +1,22 @@
  package com.example.jagaweather;
 
-import androidx.appcompat.app.AppCompatActivity;
+ import android.content.Intent;
+ import android.os.Bundle;
+ import android.transition.Fade;
+ import android.view.View;
+ import android.view.Window;
+ import android.view.animation.Animation;
+ import android.view.animation.AnimationUtils;
+ import android.widget.Button;
+ import android.widget.ImageButton;
+ import android.widget.Toast;
 
-import android.app.ActivityOptions;
-import android.content.Intent;
-import android.os.Bundle;
-import android.transition.Explode;
-import android.transition.Fade;
-import android.transition.Slide;
-import android.view.View;
-import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Toast;
+ import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+ import java.io.File;
+ import java.io.FileWriter;
+ import java.io.IOException;
+ import java.io.PrintWriter;
 
  public class Themes extends AppCompatActivity {
     ImageButton ib1,ib2,ib3,ib4,ib,ib5;
